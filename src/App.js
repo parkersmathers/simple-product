@@ -10,13 +10,15 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetchProduct()
+    fetch("/products", {
+      headers: {
+        Accept: "application/json",
+      },
+    })
+      .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        dispatch(productFetched(data));
-      })
-      .catch((error) => {
-        console.error("error :>> ", error);
+        console.log("res data :>> ", data[0]);
+        dispatch(productFetched(data[0]));
       });
   }, []);
 
