@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { fetchProduct } from "./api/client";
 import ProductChart from "./features/product/ProductChart";
 import { productFetched } from "./features/product/productSlice";
+import ProductDetails from "./features/product/ProductDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -21,16 +22,14 @@ function App() {
 
   return (
     <>
-      <header className="navbar navbar-fixed navbar-bordered py-4">
+      <header className="navbar navbar-fixed navbar-bordered p-4">
         <img className="navbar-brand-logo" src={logo} alt="logo" />
       </header>
       <main className="main">
-        <div className="content container-fluid" style={{ marginTop: "6rem" }}>
+        <div className="content container-fluid px-4">
           <div className="row mb-5">
             <div className="col-lg-3">
-              <div className="card h-100 mb-3 mb-lg-5">
-                <div className="card-body"></div>
-              </div>
+              <ProductDetails />
             </div>
             <div className="col-lg-9">
               <div className="card">

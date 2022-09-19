@@ -3,6 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   id: null,
   title: null,
+  subtitle: null,
+  image: null,
+  tags: [],
   sales: [],
 };
 
@@ -11,9 +14,12 @@ const productSlice = createSlice({
   initialState,
   reducers: {
     productFetched(state, action) {
-      const { id, title, sales } = action.payload;
+      const { id, title, subtitle, image, tags, sales } = action.payload;
       state.id = id;
       state.title = title;
+      state.subtitle = subtitle;
+      state.image = image;
+      state.tags = tags;
       state.sales = sales;
     },
   },
