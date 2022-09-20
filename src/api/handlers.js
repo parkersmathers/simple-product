@@ -1,5 +1,5 @@
 import { rest } from "msw";
-import data from "../api/data.json";
+import data from "./data.json";
 
 export const handlers = [
   // Handles GET products request

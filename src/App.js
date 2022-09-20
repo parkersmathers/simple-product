@@ -1,26 +1,19 @@
 import logo from "./logo.svg";
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { fetchProduct } from "./api/client";
+import { useDispatch, useSelector } from "react-redux";
 import ProductChart from "./features/product/ProductChart";
-import { productFetched } from "./features/product/productSlice";
+import { fetchProduct } from "./features/product/productSlice";
 import ProductDetails from "./features/product/ProductDetails";
 
 function App() {
   const dispatch = useDispatch();
+  const status = useSelector((state) => state.product.status);
 
   useEffect(() => {
-    fetch("/products", {
-      headers: {
-        Accept: "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("res data :>> ", data[0]);
-        dispatch(productFetched(data[0]));
-      });
-  }, []);
+    if (status === "loading") {
+      dispatch(fetchProduct());
+    }
+  }, [dispatch, status]);
 
   return (
     <>
@@ -31,11 +24,29 @@ function App() {
         <div className="content container-fluid px-4">
           <div className="row mb-5">
             <div className="col-lg-3">
-              <ProductDetails />
+              {status === "loading" ? (
+                <div
+                  className="card align-items-center"
+                  style={{ height: "12rem" }}
+                >
+                  <span>loading....</span>
+                </div>
+              ) : (
+                <ProductDetails />
+              )}
             </div>
             <div className="col-lg-9">
               <div className="card">
-                <ProductChart />
+                {status === "loading" ? (
+                  <div
+                    className="card align-items-center"
+                    style={{ height: "12rem" }}
+                  >
+                    <span>loading....</span>
+                  </div>
+                ) : (
+                  <ProductChart />
+                )}
               </div>
             </div>
           </div>

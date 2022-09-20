@@ -1,5 +1,5 @@
 import { setupWorker } from "msw";
 import { handlers } from "./handlers";
 
-// This configures a Service Worker with the given request handlers.
+// Service Worker with request handler to mock API calls
 export const worker = setupWorker(...handlers);

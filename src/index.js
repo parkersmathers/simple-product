@@ -7,7 +7,8 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import store from "./app/store";
 
-const { worker } = require("./mocks/browser");
+// mock API call
+const { worker } = require("./api/server");
 worker.start();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

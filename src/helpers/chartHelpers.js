@@ -100,7 +100,6 @@ const getChartView = (chartData1, chartData2, max) => {
             return moment(context[0].label).format("MMMM D");
           },
           label: (context) => {
-            console.log("context :>> ", context);
             return ` ${context.dataset.label}: $${context.formattedValue}`;
           },
           labelPointStyle: (context) => {
