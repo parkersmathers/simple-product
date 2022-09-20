@@ -1,9 +1,13 @@
 import { rest } from "msw";
-import data from "./data.json";
+import db from "./db.json";
 
 export const handlers = [
-  // Handles GET products request
-  rest.get("/products", (req, res, ctx) => {
+  // Handles GET products/:id request
+  rest.get(`/products/:id`, (req, res, ctx) => {
+    console.log("req.params :>> ", req.params);
+    // mock findbyid in db
+    const data = db.find((d) => d.id === req.params.id);
+    console.log("data :>> ", data);
     return res(ctx.status(200), ctx.json(data));
   }),
 ];

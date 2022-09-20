@@ -4,9 +4,9 @@ import axios from "axios";
 // use redux toolkit thunk to perform data fetching
 export const fetchProduct = createAsyncThunk(
   "product/fetchProduct",
-  async () => {
-    const response = await axios.get("/products");
-    return response.data[0];
+  async (id) => {
+    const response = await axios.get(`/products/${id}`);
+    return response.data;
   }
 );
 

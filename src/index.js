@@ -8,6 +8,7 @@ import { Provider } from "react-redux";
 import store from "./store";
 
 // mock API call
+// note: this is only for demo purposes, don't run this in a production environment
 const { worker } = require("./api/server");
 worker.start({ onUnhandledRequest: "bypass" });
 

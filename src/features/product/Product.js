@@ -13,7 +13,9 @@ const Product = () => {
 
   useEffect(() => {
     if (status === "loading") {
-      dispatch(fetchProduct());
+      // this is hard-coded, we would get the id for get request
+      // from react-router params, for example
+      dispatch(fetchProduct("B007TIE0GQ"));
     }
   }, [dispatch, status]);
 
