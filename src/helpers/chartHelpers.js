@@ -59,7 +59,7 @@ const getChartView = (chartData1, chartData2, max) => {
         },
       },
       y: {
-        min: -max / 2,
+        min: max && -max / 2,
         max: max,
         grid: {
           display: false,

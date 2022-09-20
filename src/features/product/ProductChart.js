@@ -6,20 +6,19 @@ import { buildChart } from "../../helpers/chartHelpers";
 const ProductChart = () => {
   const sales = useSelector((state) => state.product.sales);
 
+  // transform sales data into chart data
   const chartData = sales && sales.length && buildChart(sales);
 
-  return (
+  return chartData ? (
     <>
       <div className="card-header border-0 py-3">
         <h5 className="fw-light">Retail Sales</h5>
       </div>
       <div className="mb-3" style={{ height: "18rem" }}>
-        {chartData && (
-          <Chart data={chartData.data} options={chartData.options} />
-        )}
+        <Chart data={chartData.data} options={chartData.options} />
       </div>
     </>
-  );
+  ) : null;
 };
 
 export default ProductChart;

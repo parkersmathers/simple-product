@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {
   CategoryScale,
   Chart as ChartJS,
@@ -26,6 +27,12 @@ const Chart = ({ data, options }) => {
       <Line data={data} options={options} />
     </>
   );
+};
+
+// rudimentary type checking, this will need to be expanded
+Chart.propTypes = {
+  data: PropTypes.shape({ labels: PropTypes.array, datasets: PropTypes.array }),
+  options: PropTypes.object,
 };
 
 export default Chart;
