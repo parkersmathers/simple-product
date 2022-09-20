@@ -1,11 +1,12 @@
-import logo from "./logo.svg";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Loading from "./components/Loading";
 import ProductChart from "./features/product/ProductChart";
-import { fetchProduct } from "./features/product/productSlice";
 import ProductDetails from "./features/product/ProductDetails";
+import { fetchProduct } from "./features/product/productSlice";
+import logo from "./logo.svg";
 
-function App() {
+const App = () => {
   const dispatch = useDispatch();
   const status = useSelector((state) => state.product.status);
 
@@ -23,30 +24,12 @@ function App() {
       <main className="main">
         <div className="content container-fluid px-4">
           <div className="row mb-5">
-            <div className="col-lg-3">
-              {status === "loading" ? (
-                <div
-                  className="card align-items-center"
-                  style={{ height: "12rem" }}
-                >
-                  <span>loading....</span>
-                </div>
-              ) : (
-                <ProductDetails />
-              )}
+            <div className="col-lg-3 mb-3 mb-lg-0">
+              {status === "loading" ? <Loading /> : <ProductDetails />}
             </div>
             <div className="col-lg-9">
               <div className="card">
-                {status === "loading" ? (
-                  <div
-                    className="card align-items-center"
-                    style={{ height: "12rem" }}
-                  >
-                    <span>loading....</span>
-                  </div>
-                ) : (
-                  <ProductChart />
-                )}
+                {status === "loading" ? <Loading /> : <ProductChart />}
               </div>
             </div>
           </div>
@@ -54,6 +37,6 @@ function App() {
       </main>
     </>
   );
-}
+};
 
 export default App;

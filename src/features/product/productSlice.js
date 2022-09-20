@@ -60,6 +60,4 @@ const productSlice = createSlice({
   },
 });
 
-export const { productFetched } = productSlice.actions;
-
 export default productSlice.reducer;

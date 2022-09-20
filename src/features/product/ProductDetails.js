@@ -2,7 +2,6 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 const ProductDetails = () => {
-  // image, title, subtitle, tags
   const title = useSelector((state) => state.product.title);
   const subtitle = useSelector((state) => state.product.subtitle);
   const tags = useSelector((state) => state.product.tags);

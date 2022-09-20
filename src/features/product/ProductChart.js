@@ -13,7 +13,7 @@ const ProductChart = () => {
       <div className="card-header border-0 py-3">
         <h5 className="fw-light">Retail Sales</h5>
       </div>
-      <div className="text-uppercase mb-3" style={{ height: "18rem" }}>
+      <div className="mb-3" style={{ height: "18rem" }}>
         {chartData && (
           <Chart data={chartData.data} options={chartData.options} />
         )}
