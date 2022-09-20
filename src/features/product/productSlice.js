@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+// use redux toolkit thunk to perform data fetching
 export const fetchProduct = createAsyncThunk(
   "product/fetchProduct",
   async () => {
@@ -9,6 +10,9 @@ export const fetchProduct = createAsyncThunk(
   }
 );
 
+// note: this state is only for a single product demo
+// in a real-world scenario with many products,
+// initial state would be something like {products: [], status: 'loading', error: null}
 const initialState = {
   id: null,
   title: null,
@@ -23,10 +27,14 @@ const initialState = {
 const productSlice = createSlice({
   name: "product",
   initialState,
-  reducers: {},
+  reducers: {
+    // our create, update, delete non-asynchronous actions go here
+  },
   extraReducers(builder) {
+    // maps our async action type to matching reducer
     builder
       .addCase(fetchProduct.pending, (state) => {
+        // note: under the hood toolkit uses immer for not mutating state
         state.id = null;
         state.title = null;
         state.subtitle = null;

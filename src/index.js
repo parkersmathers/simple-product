@@ -9,7 +9,7 @@ import store from "./store";
 
 // mock API call
 const { worker } = require("./api/server");
-worker.start();
+worker.start({ onUnhandledRequest: "bypass" });
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
