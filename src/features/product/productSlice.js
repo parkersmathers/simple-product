@@ -55,7 +55,7 @@ const productSlice = createSlice({
         state.tags = [];
         state.sales = [];
         state.status = "failed";
-        state.error = action.error.code + " : " + action.error.message;
+        state.error = `Oops! An error with status code ${action.error?.code} occurred: ${action.error?.message}. Please try again later`;
       });
   },
 });

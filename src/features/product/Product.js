@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import ErrorMessage from "../../components/ErrorMessage";
 import Loading from "../../components/Loading";
 import ProductChart from "./ProductChart";
 import ProductDetails from "./ProductDetails";
@@ -8,6 +9,7 @@ import { fetchProduct } from "./productSlice";
 const Product = () => {
   const dispatch = useDispatch();
   const status = useSelector((state) => state.product.status);
+  const error = useSelector((state) => state.product.error);
 
   useEffect(() => {
     if (status === "loading") {
@@ -20,8 +22,8 @@ const Product = () => {
     // show loading state when data is being fetched
     content = <Loading />;
   } else if (status === "failed") {
-    // show error message if request returned an error
-    content = <p className="text-danger">Error</p>;
+    // show message if request returned an error
+    content = <ErrorMessage message={error} />;
   } else if (status === "succeeded") {
     // render product view when data is successfully fetched
     content = (
